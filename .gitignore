@@ -1,0 +1,27 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# Local environments and caches
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+node_modules/
+.cache/
+.tmp/
+tmp/
+
+# Logs and generated local output
+*.log
+*.tmp
+*.bak
+
+# Agent-local scratch space, if created later
+.agent/tmp/
+.agent/logs/
