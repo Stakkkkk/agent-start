@@ -22,6 +22,5 @@ tmp/
 *.tmp
 *.bak
 
-# Agent-local scratch space, if created later
-.agent/tmp/
-.agent/logs/
+# Agent-local working memory
+.agent/
