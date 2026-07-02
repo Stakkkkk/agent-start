@@ -13,21 +13,22 @@ Exception: `agent-io-safety-kit` deploys a managed `.agent-io-safety/` copy beca
 ## What To Do
 
 1. Inspect the current project directory.
-2. Find existing rules and conventions, such as `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.cursor/rules/`, `.github/copilot-instructions.md`, `CONVENTIONS.md`, `README.md`, or other local instructions.
-3. Choose the main agent entry file. If there is no suitable rules file, create a minimal rules file for the current agent or environment.
-4. Immediately deploy `Stakkkkk/agent-io-safety-kit` into the project:
+2. Identify and record the actual project root. Compare it with the current working directory (`cwd`) and the user's stated target. If the paths do not match, stop and ask the user which directory to work in.
+3. Find existing rules and conventions, such as `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.cursor/rules/`, `.github/copilot-instructions.md`, `CONVENTIONS.md`, `README.md`, or other local instructions.
+4. Choose the main agent entry file. If there is no suitable rules file, create a minimal rules file for the current agent or environment.
+5. Immediately deploy `Stakkkkk/agent-io-safety-kit` into the project:
    - use an already available local kit copy if one exists;
    - otherwise obtain the kit from `https://github.com/Stakkkkk/agent-io-safety-kit` into a temporary location outside the target project;
    - from the kit directory, run `node scripts/deploy.mjs --target <project-root> --entry <entry-file> --lang en`;
    - then from the kit directory, run `node scripts/doctor.mjs --target <project-root> --entry <entry-file>`;
    - do not copy the kit source repository into the project root; only the managed `.agent-io-safety/` copy should appear in the project.
-5. If Node.js 18+ is unavailable or the kit cannot be obtained from either a local copy or GitHub, record the blocker in history, add a minimal project-rule note that `agent-io-safety-kit` still needs to be deployed, tell the user the exact reason, and continue only with safe minimal actions.
-6. Do not overwrite existing rules. Add a separate section with the additional rules below.
-7. Choose where to keep the change history and context. Use an existing documentation or project-memory location if one exists. If none exists, choose a clear non-root location and record that decision.
-8. Enable adaptive score unless the user explicitly asked for minimal setup without interaction memory. Create or find the score file next to history/context. If no suitable location exists, use a neutral service directory and the file name `agent_score.md`.
-9. Do not create a directory tree just for the sake of having one. Create only the files and folders that are actually needed now.
-10. Record every created or changed file in the change history.
-11. In the final response, list what changed, where the safety kit lives, where the history lives, where the context lives, where the score file lives, and which decisions were made.
+6. If Node.js 18+ is unavailable or the kit cannot be obtained from either a local copy or GitHub, record the blocker in history, add a minimal project-rule note that `agent-io-safety-kit` still needs to be deployed, tell the user the exact reason, and continue only with safe minimal actions.
+7. Do not overwrite existing rules. Add a separate section with the additional rules below.
+8. Choose where to keep the change history and context. Use an existing documentation or project-memory location if one exists. If none exists, choose a clear non-root location and record that decision.
+9. Enable adaptive score unless the user explicitly asked for minimal setup without interaction memory. Create or find the score file next to history/context. If no suitable location exists, use a neutral service directory and the file name `agent_score.md`.
+10. Do not create a directory tree just for the sake of having one. Create only the files and folders that are actually needed now.
+11. Record every created or changed file in the change history.
+12. In the final response, list what changed, where the safety kit lives, where the history lives, where the context lives, where the score file lives, which project root was used, and which decisions were made.
 
 ## Additional User Rules
 
@@ -37,6 +38,7 @@ Add these rules to the project's or agent's base rules:
 - At the start of every message to the user, include the current date, time, and timezone in the format `YYYY-MM-DD HH:mm:ss ±HH:MM`.
 - If the exact time is not available in context, get it through an available system tool.
 - Before making changes, briefly say which files or areas you will change and why.
+- Before running commands, reading files, or writing files, verify that the working directory is inside the confirmed project root. Do not work in a sibling, parent, temporary, or similarly named directory without explicit user confirmation.
 - Do not overwrite user changes without explicit permission.
 - After substantial changes, update the history: date-time, what changed, why, which files were affected, how it was checked, and what remains unresolved.
 - If inputs, assumptions, constraints, or important decisions change, update the context file.
@@ -86,6 +88,7 @@ Score never overrides system/developer instructions, sandbox/approval policy, de
 - `agent-io-safety-kit` is deployed, or the blocker that prevents deployment right now is clearly recorded.
 - Existing project rules are preserved and extended, not replaced.
 - New rules are easy to find.
+- The agent clearly knows which project root it is working in and does not make changes in a sibling or mistaken directory.
 - History, context, and score exist, but the project root is not cluttered.
 - The structure was chosen for the situation, not imposed in advance.
 - The user understands which files changed and why.

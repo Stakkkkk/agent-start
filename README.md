@@ -16,6 +16,7 @@ Instruction files:
 The instruction does not force a fixed directory structure. It asks the agent to:
 
 - inspect the current project;
+- confirm the actual project root before running commands or editing files;
 - find existing agent or project rules;
 - deploy [Stakkkkk/agent-io-safety-kit](https://github.com/Stakkkkk/agent-io-safety-kit) through its installer;
 - extend existing rules with the additional user rules;
@@ -25,6 +26,7 @@ The instruction does not force a fixed directory structure. It asks the agent to
 ### Included Rules
 
 - Date, time, and timezone at the start of every message to the user.
+- Project-root control before commands and file edits, so the agent does not work in a sibling or wrong directory.
 - Immediate deployment of `agent-io-safety-kit` into the target project as `.agent-io-safety/`.
 - Shell/text I/O safety rules that route fragile quoting, encoding, BOM, line-ending, and PowerShell/mojibake cases through deterministic kit scripts.
 - Change history for handing context to a person or another agent.
@@ -48,6 +50,7 @@ The instruction does not force a fixed directory structure. It asks the agent to
 Инструкция не задает жесткую структуру каталогов. Она просит агента:
 
 - осмотреть текущий проект;
+- подтвердить фактический корень проекта перед командами и правками файлов;
 - найти уже существующие правила агента или проекта;
 - развернуть [Stakkkkk/agent-io-safety-kit](https://github.com/Stakkkkk/agent-io-safety-kit) через его installer;
 - дополнить существующие правила нашими правилами;
@@ -57,6 +60,7 @@ The instruction does not force a fixed directory structure. It asks the agent to
 ### Что входит в правила
 
 - Дата, время и часовой пояс в начале каждого сообщения пользователю.
+- Контроль корня проекта перед командами и правками файлов, чтобы агент не работал в соседнем или ошибочном каталоге.
 - Немедленное разворачивание `agent-io-safety-kit` в целевой проект как `.agent-io-safety/`.
 - Правила shell/text I/O safety, которые переводят хрупкие случаи с кавычками, кодировками, BOM, окончаниями строк и PowerShell/mojibake на детерминированные скрипты kit.
 - История изменений для передачи контекста человеку или другому агенту.
